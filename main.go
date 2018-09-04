@@ -15,8 +15,6 @@ type Response struct {
     Count int
 }
 
-
-
 func main() {
     rand.Seed(time.Now().UTC().UnixNano())
     resp := Response{Id: rand.Int(), Count: 0}

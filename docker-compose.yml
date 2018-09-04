@@ -1,12 +1,19 @@
 version: '3'
 
 services:
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
   app:
     image: augustopimenta/count
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
     deploy:
       replicas: 3
+    environment:
+      - VIRTUAL_HOST=augusto.online
