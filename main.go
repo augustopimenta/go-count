@@ -7,6 +7,7 @@ import (
     "math/rand"
     "encoding/json"
     "os"
+    "time"
 )
 
 type Response struct {
@@ -14,9 +15,11 @@ type Response struct {
     Count int
 }
 
-var resp = Response{Id: rand.Int(), Count: 0}
+
 
 func main() {
+    rand.Seed(time.Now().UTC().UnixNano())
+    resp := Response{Id: rand.Int(), Count: 0}
 
     http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
         resp.Count++
