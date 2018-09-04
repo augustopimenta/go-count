@@ -4,7 +4,7 @@ services:
   proxy:
     image: jwilder/nginx-proxy
     networks:
-      - main
+      - net01
     ports:
       - "80:80"
     volumes:
@@ -16,11 +16,11 @@ services:
       context: .
       dockerfile: Dockerfile
     networks:
-      - main
+      - net01
     deploy:
       replicas: 3
     environment:
       - VIRTUAL_HOST=augusto.online
 
   networks:
-    main:
+    net01:
