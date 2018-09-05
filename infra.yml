@@ -12,14 +12,12 @@ services:
 
   manager:
     image: portainer/portainer
-    networks:
-      - main
-    ports:
-      - "9000:9000"
-    command: -H unix:///var/run/docker.sock
     enviroment:
       - VIRTUAL_HOST=portainer.augusto.online
       - VIRTUAL_PORT=9000
+    networks:
+      - main
+    command: -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
