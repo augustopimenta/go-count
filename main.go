@@ -22,14 +22,12 @@ func main() {
     http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
         resp.Count++
 
-        data, err := json.Marshal(resp)
+        enc := json.NewEncoder(w)
 
-        if err != nil {
+        if err := enc.Encode(resp); err != nil {
             fmt.Errorf("Ocorreu um erro ao retornar")
             os.Exit(1)
         }
-
-        fmt.Fprintf(w, string(data))
     })
 
     fmt.Println("Servidor iniciado na porta :80")
