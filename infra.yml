@@ -12,7 +12,7 @@ services:
 
   manager:
     image: portainer/portainer
-    enviroment:
+    environment:
       - VIRTUAL_HOST=portainer.augusto.online
       - VIRTUAL_PORT=9000
     networks:
